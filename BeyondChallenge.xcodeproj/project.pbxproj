@@ -16,6 +16,7 @@
 		E8F6AAF522314A71005C323C /* BeyondChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F6AAF422314A71005C323C /* BeyondChallengeTests.swift */; };
 		E8F6AB0022314A71005C323C /* BeyondChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F6AAFF22314A71005C323C /* BeyondChallengeUITests.swift */; };
 		E8F6AB0E22315336005C323C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F6AB0D22315336005C323C /* MainView.swift */; };
+		E8F6AB18223155B6005C323C /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F6AB17223155B6005C323C /* CodeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		E8F6AAFF22314A71005C323C /* BeyondChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeyondChallengeUITests.swift; sourceTree = "<group>"; };
 		E8F6AB0122314A71005C323C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8F6AB0D22315336005C323C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E8F6AB17223155B6005C323C /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 		E8F6AB0F2231533A005C323C /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				E8F6AB17223155B6005C323C /* CodeView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8F6AB18223155B6005C323C /* CodeView.swift in Sources */,
 				E8F6AAE022314A70005C323C /* AppDelegate.swift in Sources */,
 				E8F6AB0E22315336005C323C /* MainView.swift in Sources */,
 			);
