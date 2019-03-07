@@ -96,12 +96,10 @@ extension MainView: CodeView {
         //define elements inside the stack view
         connectionText.snp.makeConstraints {
             $0.centerY.equalTo(stackView.snp.centerY)
-            $0.left.equalTo(stackView.snp.left)
             $0.top.equalTo(stackView.snp.top)
         }
         connectionStatus.snp.makeConstraints {
             $0.centerY.equalTo(stackView.snp.centerY)
-            $0.rightMargin.equalTo(stackView.snp.right)
         }
         
         updateButton.snp.makeConstraints {
