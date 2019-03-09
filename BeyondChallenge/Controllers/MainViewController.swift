@@ -26,13 +26,6 @@ class MainViewController: UIViewController {
             })
             .disposed(by: disposedBag)
         
-        view.connectionStatus.rx
-            .isOn
-            .subscribe { status in
-                print("switch status: \(status)")
-            }
-            .disposed(by: disposedBag)
-        
         service.connectionStatus
             .bind(to: view.connectionStatus.rx.isOn)
             .disposed(by:disposedBag)
