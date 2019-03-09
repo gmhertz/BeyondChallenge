@@ -12,8 +12,8 @@ class MainView: UIView {
     //Declare elements of the screen
     lazy var image: UIImageView = {
         let image = UIImageView(frame: .zero)
-        image.backgroundColor = .orange
         image.contentMode = .scaleAspectFit
+        image.image = UIImage(named: "lightbulb")
         
         return image
     }()
@@ -21,11 +21,8 @@ class MainView: UIView {
     lazy var updateButton: UIButton = {
         let button = UIButton(frame: .zero)
         button.setTitle("Atualizar", for: .normal)
-        button.titleLabel?.font.withSize(18)
-        button.backgroundColor = .blue
-        
-        button.layer.cornerRadius = 10.0
-        button.layer.borderWidth = 3.0
+        button.titleLabel?.font = button.titleLabel?.font.withSize(23)
+        button.backgroundColor = .clear
         
         return button
     }()
@@ -35,10 +32,7 @@ class MainView: UIView {
         label.text = "Conectado"
         label.textAlignment = .left
         label.textColor = .white
-        label.backgroundColor = .black
-        //        label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.font.withSize(20)
-        
+        label.font = label.font.withSize(23)
         return label
     }()
     
@@ -62,7 +56,7 @@ class MainView: UIView {
     
     
     //init functions
-    override init(frame: CGRect) {
+    override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         viewSetup()
     }
@@ -82,9 +76,9 @@ extension MainView: CodeView {
     func viewConstraints() {
         image.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.left.equalToSuperview().offset(50)
-            $0.top.equalToSuperview().offset(50)
-            $0.height.equalTo(200)
+            $0.left.equalToSuperview().offset(100)
+            $0.top.equalToSuperview().offset(100)
+            $0.height.equalTo(150)
         }
         
         stackView.snp.makeConstraints {
@@ -93,13 +87,12 @@ extension MainView: CodeView {
             $0.top.equalTo(image.snp.bottom).offset(60)
         }
         
-        //define elements inside the stack view
         connectionText.snp.makeConstraints {
-            $0.centerY.equalTo(stackView.snp.centerY)
-            $0.top.equalTo(stackView.snp.top)
+            $0.centerY.equalToSuperview()
         }
+        
         connectionStatus.snp.makeConstraints {
-            $0.centerY.equalTo(stackView.snp.centerY)
+            $0.centerY.equalToSuperview()
         }
         
         updateButton.snp.makeConstraints {
@@ -113,5 +106,4 @@ extension MainView: CodeView {
     func viewAdditionalConfiguration() {
         backgroundColor = .darkGray
     }
-    
 }
