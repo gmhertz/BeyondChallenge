@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
         //Need to make bind here before set FirstScreen as View or find a better way
         view.updateButton.rx.tap
             .subscribe(onNext: {
-                let dimmerVC = DimmerViewController()
+                let dimmerVC = DimmerViewController(service: self.service)
                 dimmerVC.modalPresentationStyle = .overCurrentContext
                 self.present(dimmerVC, animated: true, completion: nil)
             })
