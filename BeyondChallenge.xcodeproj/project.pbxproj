@@ -10,6 +10,7 @@
 		25B73926F4CAD758B2586F78 /* Pods_BeyondChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D78FC83BA79F63167D59F9 /* Pods_BeyondChallengeUITests.framework */; };
 		9C192F8E7CCDEB6FB135B6EC /* Pods_BeyondChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 873ECC0825ADBD2D69AF529A /* Pods_BeyondChallenge.framework */; };
 		DE56122395C6A9E2EBAE06BB /* Pods_BeyondChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF7C82A7758254EC89DF9D7 /* Pods_BeyondChallengeTests.framework */; };
+		E8EE77AB223445E100CE0890 /* CommunicationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EE77AA223445E100CE0890 /* CommunicationService.swift */; };
 		E8EE77AD2234764C00CE0890 /* BeyondKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8EE77AC2234764C00CE0890 /* BeyondKeys.plist */; };
 		E8F6AAE022314A70005C323C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F6AADF22314A70005C323C /* AppDelegate.swift */; };
 		E8F6AAE722314A71005C323C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8F6AAE622314A71005C323C /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		9C880474962D210D588CF6D1 /* Pods-BeyondChallengeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeyondChallengeUITests.release.xcconfig"; path = "Target Support Files/Pods-BeyondChallengeUITests/Pods-BeyondChallengeUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B0C8D7E65C40232ECD9BB751 /* Pods-BeyondChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeyondChallengeTests.debug.xcconfig"; path = "Target Support Files/Pods-BeyondChallengeTests/Pods-BeyondChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BDF7C82A7758254EC89DF9D7 /* Pods_BeyondChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeyondChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8EE77AA223445E100CE0890 /* CommunicationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationService.swift; sourceTree = "<group>"; };
 		E8EE77AC2234764C00CE0890 /* BeyondKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = BeyondKeys.plist; sourceTree = "<group>"; };
 		E8F6AADC22314A70005C323C /* BeyondChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeyondChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8F6AADF22314A70005C323C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 		E8F6AB122231535F005C323C /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E8EE77AA223445E100CE0890 /* CommunicationService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				E8F6AB18223155B6005C323C /* CodeView.swift in Sources */,
 				E8F6AB1E2233E4A7005C323C /* DimmverViewController.swift in Sources */,
 				E8F6AB1C2232050E005C323C /* DimmerView.swift in Sources */,
+				E8EE77AB223445E100CE0890 /* CommunicationService.swift in Sources */,
 				E8F6AAE022314A70005C323C /* AppDelegate.swift in Sources */,
 				E8F6AB0E22315336005C323C /* MainView.swift in Sources */,
 				E8F6AB1A22315641005C323C /* MainViewController.swift in Sources */,
