@@ -11,6 +11,7 @@ import RxSwift
 import UIKit
 
 class MainViewController: UIViewController {
+    let service = CommunicationService()
     let disposedBag: DisposeBag = DisposeBag()
     
     override func loadView() {
@@ -33,6 +34,19 @@ class MainViewController: UIViewController {
             }
             .disposed(by: disposedBag)
         
+        service.connectionStatus
+            .bind(to: view.connectionStatus.rx.isOn)
+            .disposed(by:disposedBag)
+        
+        //TO DO: error handling
+//        service
+//            .errorHandler
+//            .subscribe({ returnCode in
+//                print(returnCode.debugDescription)
+//            })
+//            .disposed(by: disposedBag)
+        
+        service.connect()
         self.view = view
     }
 }
