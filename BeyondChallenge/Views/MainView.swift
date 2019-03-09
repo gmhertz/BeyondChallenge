@@ -38,6 +38,7 @@ class MainView: UIView {
     
     lazy var connectionStatus: UISwitch = {
         let connectionStatus = UISwitch(frame: .zero)
+        connectionStatus.isUserInteractionEnabled = false
         return connectionStatus
     }()
     
