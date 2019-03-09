@@ -15,7 +15,7 @@ import RxSwift
 class CommunicationService {
     
     private var mqttConfig: MQTTConfig
-    private var mqqtClient: MQTTClient?
+    private var mqqtClient: MQTTClient!
     
     //topics
     private lazy var subscribeTopic: String = {
@@ -60,10 +60,18 @@ class CommunicationService {
             }
         }
         
-        //define disconnection binder?
+        //define publish callback to control
+        mqttConfig.onPublishCallback = { messageId in
+            print("The message with id \(messageId) was publish on topic")
+        }
     }
     
     func connect() {
         mqqtClient = MQTT.newConnection(mqttConfig)
+    }
+    
+    func publishValue(value: Float) {
+        //default config according github
+        mqqtClient.publish(string: value.description, topic: publishTopic, qos: 2, retain: false)
     }
 }
