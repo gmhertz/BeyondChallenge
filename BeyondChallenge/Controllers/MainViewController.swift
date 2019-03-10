@@ -30,6 +30,12 @@ class MainViewController: UIViewController {
             .bind(to: view.connectionStatus.rx.isOn)
             .disposed(by:disposedBag)
         
+        service
+            .dimmerValue
+            .map { $0 < 50 ? true : false }
+            .bind(to: view.image.rx.isHidden)
+            .disposed(by: disposedBag)
+        
         //TO DO: error handling
 //        service
 //            .errorHandler
