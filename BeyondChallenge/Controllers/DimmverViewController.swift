@@ -14,13 +14,36 @@ import RxGesture
 class DimmerViewController: UIViewController {
     
     let disposedBag: DisposeBag = DisposeBag()
+    let service: CommunicationService
+    
+    init(service: CommunicationService) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         let view = DimmerView()
         
-        view.dimmer.rx.value.subscribe { value in
-            print(value)
-        }.disposed(by: disposedBag)
+        service
+            .dimmerValue
+            .asObservable()
+            .take(1)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { value in
+                view.dimmer.value = Float(value)
+            })
+            .disposed(by: disposedBag)
+
+        view.dimmer.rx
+            .value.subscribe(onNext: { value in
+                let integerValue = Int(value)
+                self.service.publishValue(value: integerValue)
+            }).disposed(by: disposedBag)
+        
         
         view.doneButton.rx
             .tap

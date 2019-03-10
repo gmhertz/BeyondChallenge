@@ -12,6 +12,10 @@ target 'BeyondChallenge' do
   pod 'RxCocoa',    '~> 4.0'
   pod 'SnapKit', '~> 4.0.0'
   pod "RxGesture"
+  
+  #back-end frameworks
+  pod 'Moscapsule', :git => 'https://github.com/flightonary/Moscapsule.git'
+  pod 'OpenSSL-Universal'
 
   target 'BeyondChallengeTests' do
     inherit! :search_paths
