@@ -28,7 +28,16 @@ class DimmerViewController: UIViewController {
     override func loadView() {
         let view = DimmerView()
         
-        view.dimmer.rx.
+        service
+            .dimmerValue
+            .asObservable()
+            .take(1)
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { value in
+                view.dimmer.value = Float(value)
+            })
+            .disposed(by: disposedBag)
+
         view.dimmer.rx
             .value.subscribe(onNext: { value in
                 let integerValue = Int(value)
