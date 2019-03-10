@@ -13,9 +13,11 @@ import Moscapsule
 import RxSwift
 
 class CommunicationService {
+    //control variables
+    private var isSubscribed: Bool = false
     
     private var mqttConfig: MQTTConfig
-    private var mqqtClient: MQTTClient!
+    private var mqttClient: MQTTClient!
     
     //topics
     private lazy var subscribeTopic: String = {
@@ -40,6 +42,8 @@ class CommunicationService {
     
     //connectionStatus
     private(set) var connectionStatus = ReplaySubject<Bool>.create(bufferSize: 1)
+    //subscribed value
+    private(set) var dimmerValue = ReplaySubject<Int>.create(bufferSize: 1)
     
     //error handler
     //private(set) var errorHandler = ReplaySubject<ReturnCode>.create(bufferSize: 1)
@@ -47,7 +51,6 @@ class CommunicationService {
     init() {
         let uuid = UUID()
         mqttConfig = MQTTConfig(clientId: "ambar-beyond-" + uuid.description, host: "ambar.mqtt.beyond.dm", port: 1883, keepAlive: 60)
-        
         
         //define connection binder
         mqttConfig.onConnectCallback = { returnCode in
@@ -59,19 +62,43 @@ class CommunicationService {
                 //self.errorHandler.onNext(returnCode)
             }
         }
-        
+
         //define publish callback to control
         mqttConfig.onPublishCallback = { messageId in
-            print("The message with id \(messageId) was publish on topic")
+            //print("PUBLISHED - The message with id \(messageId) was publish on topic")
+        }
+        
+        //define subscribe callback to control
+        mqttConfig.onSubscribeCallback = { (messageId, grantedQos) in
+            //print("SUBSCRIBED - (mid=\(messageId),grantedQos=\(grantedQos))")
+        }
+        
+        //define message callback, should get value to bind to image?
+        mqttConfig.onMessageCallback = { mqttMessage in
+            if mqttMessage.topic == self.publishTopic {
+                if let data = mqttMessage.payloadString, let value = Int(data) {
+                    self.dimmerValue.onNext(value)
+                    //print("RECEIVED MESSAGE: \(value) ON TOPIC: \(mqttMessage.topic)")
+                }
+            }
         }
     }
     
-    func connect() {
-        mqqtClient = MQTT.newConnection(mqttConfig)
+    func connectMQTT() {
+        moscapsule_init()
+        mqttClient = MQTT.newConnection(mqttConfig)
+        //mqttClient.subscribe(self.publishTopic, qos: 2)
     }
     
-    func publishValue(value: Float) {
+    func publishValue(value: Int) {
         //default config according github
-        mqqtClient.publish(string: value.description, topic: publishTopic, qos: 2, retain: false)
+        mqttClient.publish(string: value.description, topic: publishTopic, qos: 2, retain: false)
+    }
+    
+    func subscribeToChannel() {
+        if !isSubscribed {
+            self.mqttClient.subscribe(self.publishTopic, qos: 2)
+            isSubscribed = true
+        }
     }
 }
