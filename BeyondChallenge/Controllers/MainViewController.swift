@@ -33,8 +33,8 @@ class MainViewController: UIViewController {
         
         service
             .dimmerValue
-            .map { $0 < 50 ? true : false }
-            .bind(to: view.image.rx.isHidden)
+            .map { $0 < 50 ? UIImage(named:"lamp_Off") : UIImage(named:"lamp_On") }
+            .bind(to: view.image.rx.image)
             .disposed(by: disposedBag)
         
         //TO DO: error handling
