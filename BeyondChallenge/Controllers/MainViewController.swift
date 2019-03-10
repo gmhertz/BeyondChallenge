@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
         //Need to make bind here before set FirstScreen as View or find a better way
         view.updateButton.rx.tap
             .subscribe(onNext: {
+                self.service.subscribeToChannel()
                 let dimmerVC = DimmerViewController(service: self.service)
                 dimmerVC.modalPresentationStyle = .overCurrentContext
                 self.present(dimmerVC, animated: true, completion: nil)
@@ -44,7 +45,7 @@ class MainViewController: UIViewController {
 //            })
 //            .disposed(by: disposedBag)
         
-        service.connect()
+        service.connectMQTT()
         self.view = view
     }
 }
