@@ -13,7 +13,7 @@ class MainView: UIView {
     lazy var image: UIImageView = {
         let image = UIImageView(frame: .zero)
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(named: "lightbulb")
+        image.image = UIImage(named: "lamp_Off")
         
         return image
     }()
