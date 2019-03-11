@@ -40,6 +40,25 @@ class CommunicationService {
         }
     }()
     
+    private lazy var clientID: String = {
+        if let path = Bundle.main.path(forResource: "BeyondKeys", ofType: "plist"),
+            let values = NSDictionary(contentsOfFile: path),
+            let topic = values["ClientID"] as? String {
+            return topic
+        } else {
+            return ""
+        }
+    }()
+    
+    private lazy var clientHost: String = {
+        if let path = Bundle.main.path(forResource: "BeyondKeys", ofType: "plist"),
+            let values = NSDictionary(contentsOfFile: path),
+            let topic = values["ClientHost"] as? String {
+            return topic
+        } else {
+            return ""
+        }
+    }()
     //connectionStatus
     private(set) var connectionStatus = ReplaySubject<Bool>.create(bufferSize: 1)
     //subscribed value
@@ -75,7 +94,7 @@ class CommunicationService {
         
         //define message callback, should get value to bind to image?
         mqttConfig.onMessageCallback = { mqttMessage in
-            if mqttMessage.topic == self.publishTopic {
+            if mqttMessage.topic == self.subscribeTopic {
                 if let data = mqttMessage.payloadString, let value = Int(data) {
                     self.dimmerValue.onNext(value)
                     //print("RECEIVED MESSAGE: \(value) ON TOPIC: \(mqttMessage.topic)")
@@ -97,7 +116,7 @@ class CommunicationService {
     
     func subscribeToChannel() {
         if !isSubscribed {
-            self.mqttClient.subscribe(self.publishTopic, qos: 2)
+            self.mqttClient.subscribe(self.subscribeTopic, qos: 2)
             isSubscribed = true
         }
     }

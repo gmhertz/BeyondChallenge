@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ClientHost</key>
+	<string>TYPE CLIENT HOST HERE</string>
+	<key>ClientID</key>
+	<string>TYPE CLIENT ID HERE</string>
 	<key>Subscribe</key>
 	<string>TYPE SUBSCRIBE TOPIC HERE</string>
 	<key>Publish</key>
