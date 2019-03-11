@@ -40,6 +40,25 @@ class CommunicationService {
         }
     }()
     
+    private lazy var clientID: String = {
+        if let path = Bundle.main.path(forResource: "BeyondKeys", ofType: "plist"),
+            let values = NSDictionary(contentsOfFile: path),
+            let topic = values["ClientID"] as? String {
+            return topic
+        } else {
+            return ""
+        }
+    }()
+    
+    private lazy var clientHost: String = {
+        if let path = Bundle.main.path(forResource: "BeyondKeys", ofType: "plist"),
+            let values = NSDictionary(contentsOfFile: path),
+            let topic = values["ClientHost"] as? String {
+            return topic
+        } else {
+            return ""
+        }
+    }()
     //connectionStatus
     private(set) var connectionStatus = ReplaySubject<Bool>.create(bufferSize: 1)
     //subscribed value
