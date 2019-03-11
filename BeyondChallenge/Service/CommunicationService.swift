@@ -94,7 +94,7 @@ class CommunicationService {
         
         //define message callback, should get value to bind to image?
         mqttConfig.onMessageCallback = { mqttMessage in
-            if mqttMessage.topic == self.publishTopic {
+            if mqttMessage.topic == self.subscribeTopic {
                 if let data = mqttMessage.payloadString, let value = Int(data) {
                     self.dimmerValue.onNext(value)
                     //print("RECEIVED MESSAGE: \(value) ON TOPIC: \(mqttMessage.topic)")
@@ -116,7 +116,7 @@ class CommunicationService {
     
     func subscribeToChannel() {
         if !isSubscribed {
-            self.mqttClient.subscribe(self.publishTopic, qos: 2)
+            self.mqttClient.subscribe(self.subscribeTopic, qos: 2)
             isSubscribed = true
         }
     }
